@@ -1,0 +1,5 @@
+en:
+  theme_metadata:
+    description: Claude Code skills for Discourse development
+    settings:
+      example_setting: A description of a setting.
