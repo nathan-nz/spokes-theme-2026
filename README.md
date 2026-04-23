@@ -1,6 +1,6 @@
 # Discourse Theme Skills
 
-Claude Code skills for Discourse theme and component development, bundled with a reference theme that demonstrates the blocks system end-to-end.
+Claude Code skills for Discourse theme and block component development, bundled with a reference theme that demonstrates the blocks system end-to-end.
 
 ## Skills
 
