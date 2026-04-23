@@ -39,10 +39,7 @@ export default class BlockCategoryBanner extends Component {
   }
 
   <template>
-    <div
-      class="block-category-banner__layout"
-      {{didInsert this.getCategory}}
-    >
+    <div class="block-category-banner__layout" {{didInsert this.getCategory}}>
       {{#if this.category}}
         {{#if (and @showLogo this.category.uploaded_logo)}}
           <div class="block-category-banner__logo">
