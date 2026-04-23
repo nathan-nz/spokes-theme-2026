@@ -703,6 +703,41 @@ Key variable categories and examples:
 --d-topic-list-title-font-size, --d-sidebar-link-color
 ```
 
+## Testing
+
+Themes include a system spec at `spec/system/core_features_spec.rb` that runs shared examples from Discourse core to verify basic functionality (login, topic creation, search, etc.) still works with the theme active.
+
+### Core Features Spec
+
+The generated spec looks like:
+
+```ruby
+RSpec.describe "Core features" do
+  before { upload_theme_or_component }
+
+  it_behaves_like "having working core features"
+end
+```
+
+### Skipping Examples
+
+If the theme intentionally changes behavior that causes a core features test to fail (e.g., a custom homepage without a Create Topic button), skip that example rather than removing the entire spec:
+
+```ruby
+RSpec.describe "Core features" do
+  before { upload_theme_or_component }
+
+  it_behaves_like "having working core features",
+                  skip_examples: %i[topics:create]
+end
+```
+
+Available skip keys: `login`, `likes`, `profile`, `topics`, `topics:read`, `topics:reply`, `topics:create`, `search`, `search:quick_search`, `search:full_page`.
+
+To find the right key, look in core's `spec/support/shared_examples/core_features.rb` for the `skip_examples.exclude?` guard around the failing example.
+
+Only skip examples when the failure is caused by intentional theme behavior, not actual bugs.
+
 ## Key Files Reference
 
 | Area | Path |
