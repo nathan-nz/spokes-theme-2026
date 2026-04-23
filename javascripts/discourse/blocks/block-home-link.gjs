@@ -24,7 +24,7 @@ export default class BlockHomeLink extends Component {
         <a
           class="sidebar-section-link sidebar-row
             {{if this.isHomepage 'active'}}"
-          href={{getURL "/"}}
+          href={{getURL "/custom"}}
         >
           <span class="sidebar-section-link-prefix icon">{{dIcon
               "house"
