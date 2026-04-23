@@ -1,0 +1,36 @@
+.block-featured-list {
+  &__layout {
+    @include card;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    @include card-header;
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  &__link {
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--skills-accent);
+  }
+
+  &__list {
+    .topic-list {
+      margin: 0;
+
+      th,
+      td {
+        padding-inline: var(--space-4);
+      }
+    }
+
+    .topic-list-item:last-child {
+      border-bottom: 0;
+    }
+  }
+}

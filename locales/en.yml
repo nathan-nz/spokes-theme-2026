@@ -1,5 +1,44 @@
 en:
   theme_metadata:
-    description: Claude Code skills for Discourse development
+    description: "Example Discourse theme with blocks — skills reference implementation"
     settings:
-      example_setting: A description of a setting.
+      featured_topics_tag: "Tag used to filter featured topics"
+      featured_topics_count: "Number of featured topics to display"
+      featured_list_count: "Number of topics in the featured list"
+      featured_list_filter: "Filter for the featured list (latest, top, new, hot)"
+      leaderboard_count: "Number of users shown on the leaderboard"
+      events_count: "Number of upcoming events to show"
+      sidebar_category_id: "Category ID for sidebar topic list"
+      sidebar_tags_count: "Number of tags shown in sidebar"
+      banner_categories: "Categories that display a banner"
+      cta_link: "URL for the call-to-action button"
+  hero:
+    title: "Build something great together"
+    subtitle: "A community for makers, thinkers, and doers. Ask questions, share ideas, and level up."
+    button_label: "Get started"
+  homepage:
+    featured_list:
+      title: "Latest discussions"
+      link_text: "View all"
+    featured_topics:
+      title: "Featured"
+      link_text: "See all featured"
+    leaderboard:
+      title: "Top contributors"
+      button_label: "See leaderboard"
+    events:
+      title: "Upcoming events"
+      button_label: "Details"
+      link_label: "See all events"
+    cta:
+      title: "Ready to join the conversation?"
+      description: "Create an account to ask questions, share what you know, and connect with the community."
+      button_label: "Sign up now"
+  category_banner:
+    fallback_description: "Explore topics in this category"
+  sidebar:
+    home_link: "Home"
+    category_topics:
+      title: "Trending in category"
+    top_tags:
+      title: "Popular tags"

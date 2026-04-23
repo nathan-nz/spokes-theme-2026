@@ -28,7 +28,7 @@ javascripts/discourse/
 
 - Block files are always named `block-*.gjs` inside `blocks/`
 - Initializer files are named after the outlet they configure (e.g., `homepage-blocks.gjs`)
-- One initializer file per outlet is the standard pattern
+- **Exactly one initializer file per outlet, and exactly one outlet per initializer file.** Never call `api.renderBlocks()` for two different outlets in the same file. If you need to render into `main-outlet-blocks` and `homepage-blocks`, create two separate initializer files.
 
 ### Block Names
 
@@ -581,3 +581,4 @@ module("My block tests", function (hooks) {
 | Using `sizes` in viewport condition                | Use `min`/`max` breakpoints: `{ type: "viewport", min: "lg" }`                     |
 | Using `trust_level` in user condition              | Use `minTrustLevel`/`maxTrustLevel` (camelCase, separate min/max)                  |
 | Using `enabled` alone in setting condition         | Always include `name`: `{ type: "setting", name: "...", enabled: true }`           |
+| Multiple outlets in one initializer file           | **Never** call `renderBlocks()` for different outlets in the same file. One file = one outlet. Create separate initializer files named after their outlet. |
