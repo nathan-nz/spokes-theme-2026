@@ -7,8 +7,6 @@ description: Use when creating, registering, or rendering Discourse block compon
 
 Blocks are the modular UI composition system in Discourse. They allow themes to define self-contained Glimmer components that can be registered, conditionally shown, and rendered into named outlets throughout the app.
 
-The system is **experimental**. Only use it for features explicitly targeting the blocks API.
-
 ## Conventions
 
 ### File Structure
@@ -570,15 +568,15 @@ module("My block tests", function (hooks) {
 
 ## Common Mistakes
 
-| Mistake                                            | Fix                                                                                |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Calling `renderBlocks` in a pre-initializer        | Move to a plain `apiInitializer`                                                   |
-| Using `<MyBlock />` directly in a template         | Only `<BlockOutlet>` can render blocks                                             |
-| Forgetting namespace in block name                 | Theme blocks must be `theme:theme-name:block-name`                                 |
-| Trying to register a custom outlet from a theme    | Themes cannot register outlets — only plugins can (requires pre-initializer phase) |
-| Conditions array with OR logic using a plain array | Use `{ any: [...] }` for OR; plain array is always AND                             |
-| Multiple blocks of same type without `id`          | Add `id` to each entry for stable DOM identity                                     |
-| Using `sizes` in viewport condition                | Use `min`/`max` breakpoints: `{ type: "viewport", min: "lg" }`                     |
-| Using `trust_level` in user condition              | Use `minTrustLevel`/`maxTrustLevel` (camelCase, separate min/max)                  |
-| Using `enabled` alone in setting condition         | Always include `name`: `{ type: "setting", name: "...", enabled: true }`           |
-| Multiple outlets in one initializer file           | **Never** call `renderBlocks()` for different outlets in the same file. One file = one outlet. Create separate initializer files named after their outlet. |
+| Mistake                                            | Fix                                                                                                                                                    |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Calling `renderBlocks` in a pre-initializer        | Move to a plain `apiInitializer`                                                                                                                       |
+| Using `<MyBlock />` directly in a template         | Only `<BlockOutlet>` can render blocks                                                                                                                 |
+| Forgetting namespace in block name                 | Theme blocks must be `theme:theme-name:block-name`                                                                                                     |
+| Trying to register a custom outlet from a theme    | Themes cannot register outlets — only plugins can (requires pre-initializer phase)                                                                     |
+| Conditions array with OR logic using a plain array | Use `{ any: [...] }` for OR; plain array is always AND                                                                                                 |
+| Multiple blocks of same type without `id`          | Add `id` to each entry for stable DOM identity                                                                                                         |
+| Using `sizes` in viewport condition                | Use `min`/`max` breakpoints: `{ type: "viewport", min: "lg" }`                                                                                         |
+| Using `trust_level` in user condition              | Use `minTrustLevel`/`maxTrustLevel` (camelCase, separate min/max)                                                                                      |
+| Using `enabled` alone in setting condition         | Always include `name`: `{ type: "setting", name: "...", enabled: true }`                                                                               |
+| Multiple outlets in one initializer file           | Never call `renderBlocks()` for different outlets in the same file. One file = one outlet. Create separate initializer files named after their outlet. |
