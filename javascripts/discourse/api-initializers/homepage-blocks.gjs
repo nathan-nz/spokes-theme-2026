@@ -3,7 +3,7 @@ import { apiInitializer } from "discourse/lib/api";
 import BlockCta from "../blocks/block-cta";
 import BlockFeaturedList from "../blocks/block-featured-list";
 import BlockFeaturedTopics from "../blocks/block-featured-topics";
-import BlockSidebarSubmissions from "../blocks/block-submissions";
+import BlockSubmissionsList from "../blocks/block-submissions-list";
 import BlockUpcomingEvents from "../blocks/block-upcoming-events";
 
 export default apiInitializer((api) => {
@@ -53,21 +53,18 @@ export default apiInitializer((api) => {
             linkLabel: "homepage.events.link_label",
             linkUrl: "/c/events",
           },
-          conditions: {
-            type: "setting",
-            name: "calendar_enabled",
-            enabled: true,
-          },
+          conditions: [
+            { type: "setting", name: "calendar_enabled", enabled: true },
+          ],
         },
-       {
-          block: BlockSidebarSubmissionsList,
+        {
+          block: BlockSubmissionsList,
           id: "sidebar-submissions-list",
           args: {
-            title: "community.submissions",
             count: 6,
             tag: "submissions",
           },
-       }
+        },
       ],
     },
   ]);
