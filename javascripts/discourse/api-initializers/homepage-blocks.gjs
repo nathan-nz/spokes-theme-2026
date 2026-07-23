@@ -44,20 +44,6 @@ export default apiInitializer((api) => {
       id: "homepage-right",
       children: [
         {
-          block: BlockLeaderboard,
-          id: "homepage-leaderboard",
-          args: {
-            title: "homepage.leaderboard.title",
-            count: settings.leaderboard_count,
-            buttonLabel: "homepage.leaderboard.button_label",
-          },
-          conditions: {
-            type: "setting",
-            name: "discourse_gamification_enabled",
-            enabled: true,
-          },
-        },
-        {
           block: BlockUpcomingEvents,
           id: "homepage-events",
           args: {
@@ -73,6 +59,15 @@ export default apiInitializer((api) => {
             enabled: true,
           },
         },
+       {
+          block: BlockSidebarSubmissions,
+          id: "sidebar-submissions"
+          args: {
+            title: "community.submissions",
+            count: 6,
+            tag: "submissions",
+          },
+       }
       ],
     },
   ]);
