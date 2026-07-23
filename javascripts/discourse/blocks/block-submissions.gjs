@@ -1,76 +1,67 @@
 import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
+import { service } from "@ember/service";
+import { htmlSafe } from "@ember/template";
 import { block } from "discourse/blocks";
-import AsyncContent from "discourse/components/async-content";
-import { ajax } from "discourse/lib/ajax";
-import { bind } from "discourse/lib/decorators";
-import { i18n } from "discourse-i18n";
+import replaceEmoji from "discourse/helpers/replace-emoji";
 
-@block("theme:skills:sidebar-submissions", {
-  description: "Compact list of topics tagged 'submissions'",
+@block("theme:block:submissions-list", {
+  description: "Recent topics from a tag",
   args: {
-    title: { type: "string" },
-    count: { type: "number", default: 6 },
     tag: { type: "string", default: "submissions" },
+    count: { type: "number", default: 10 },
   },
 })
-export default class BlockSubmissions extends Component {
-  @bind
-  async fetchTopics() {
-    const count = this.args.count || 6;
-    const tag = this.args.tag || "submissions";
-    const results = await ajax(`/tag/${tag}.json`);
+export default class BlockSubmissionsList extends Component {
+  @service store;
 
-    if (!results.topic_list?.topics?.length) {
-      return null;
+  @tracked topics = null;
+
+  constructor() {
+    super(...arguments);
+    const count = this.args.count || 10;
+    const tag = this.args.tag || "submissions";
+
+    if (!tag) {
+      return;
     }
 
-    return results.topic_list.topics.slice(0, count);
+    const filter = `tag/${tag}`;
+
+    this.store.findFiltered("topicList", { filter }).then((topicList) => {
+      if (topicList.topics) {
+        this.topics = topicList.topics.slice(0, count);
+      }
+    });
+  }
+
+  willDestroy() {
+    super.willDestroy(...arguments);
+    this.topics = null;
   }
 
   <template>
-    <AsyncContent @asyncData={{this.fetchTopics}}>
-      <:loading>
-        <div class="block-submissions__loading">
-          <div class="spinner" />
-        </div>
-      </:loading>
-
-      <:empty>
-        <div class="block-submissions__empty">
-          {{i18n "sidebar.nothing"}}
-        </div>
-      </:empty>
-
-      <:content as |topics|>
-        <div class="block-submissions__layout">
-          {{#if @title}}
-            <h4 class="block-submissions__title">{{i18n (themePrefix @title)}}</h4>
-          {{/if}}
-          <div class="block-submissions__list">
-            {{#each topics as |topic|}}
-              <a
-                href={{topic.url}}
-                class="block-submissions__item"
-              >
-                <span class="block-submissions__item-title">
-                  {{topic.title}}
-                </span>
-                <span class="block-submissions__item-meta">
-                  {{topic.replyCount}}
-                  {{i18n "replies"}}
-                  ·
-                  {{topic.views}}
-                  {{i18n "views"}}
-                </span>
-              </a>
-            {{/each}}
-          </div>
-          <a href="/tag/submissions" class="block-submissions__see-all">
-            See all submissions
+    {{#if this.topics}}
+      <div class="block-submissions-list__layout">
+        <div class="block-submissions-list__header">
+          <h3 class="block-submissions-list__title">
+            Submissions
+          </h3>
+          <a href="/tag/submissions" class="block-submissions-list__link">
+            See all
           </a>
         </div>
-      </:content>
-
-    </AsyncContent>
+        <div class="block-submissions-list__list">
+          {{#each this.topics as |topic|}}
+            <a href={{topic.url}} class="block-submissions-list__topic">
+              {{htmlSafe (replaceEmoji topic.fancy_title)}}
+              <span class="block-submissions-list__post-count">
+                ({{topic.posts_count}})
+              </span>
+            </a>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
   </template>
 }
