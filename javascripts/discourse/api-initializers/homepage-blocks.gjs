@@ -8,11 +8,10 @@ import BlockUpcomingEvents from "../blocks/block-upcoming-events";
 
 export default apiInitializer((api) => {
 
-  api.onPageChange(() => {
-  const router = api.container.lookup("service:router");
-  console.log("Current route:", router.currentRouteName);
+  api.registerValueTransformer("welcome-banner-display-for-route", ({ value }) => {
+    const router = api.container.lookup("service:router");
+    return router.currentRouteName === "discovery.custom" || value;
   });
-
 
   api.renderBlocks("homepage-blocks", [
     {
