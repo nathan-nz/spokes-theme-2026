@@ -1,11 +1,11 @@
 {
-  "name": "Discourse Skills",
+  "name": "Spokes Theme 2026",
   "component": false,
-  "authors": "Discourse",
-  "about_url": "TODO: Put your theme's public repo or Meta topic URL here",
+  "authors": "Nathan Kershaw",
+  "about_url": "https://github.com/nathan-nz/spokes-theme-2026",
   "license_url": "TODO: Put your theme's LICENSE URL here",
   "learn_more": "TODO",
-  "theme_version": "0.0.1",
+  "theme_version": "0.0.5",
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
   "assets": {},
@@ -13,35 +13,5 @@
     "custom_homepage": true,
     "serialize_topic_excerpts": true,
     "svg_icons": ["far-lightbulb", "far-gem", "far-calendar", "trophy"]
-  },
-  "color_schemes": {
-    "Skills Light": {
-      "primary": "57534e",
-      "secondary": "ffffff",
-      "tertiary": "0066ff",
-      "quaternary": "ff3366",
-      "header_background": "ffffff",
-      "header_primary": "57534e",
-      "highlight": "ffe066",
-      "hover": "f5f5f4",
-      "selected": "f0efee",
-      "danger": "e53e3e",
-      "success": "38a169",
-      "love": "ff3366"
-    },
-    "Skills Dark": {
-      "primary": "f5f5f4",
-      "secondary": "1c1917",
-      "tertiary": "4d9fff",
-      "quaternary": "ff6690",
-      "header_background": "1c1917",
-      "header_primary": "f5f5f4",
-      "highlight": "ffe066",
-      "hover": "292524",
-      "selected": "34302e",
-      "danger": "fc5c65",
-      "success": "4cd964",
-      "love": "ff6690"
-    }
   }
 }
