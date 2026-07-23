@@ -75,15 +75,5 @@ export default apiInitializer((api) => {
         },
       ],
     },
-    {
-      block: BlockCta,
-      id: "homepage-cta",
-      args: {
-        title: "homepage.cta.title",
-        description: "homepage.cta.description",
-        buttonLabel: "homepage.cta.button_label",
-        buttonLink: settings.cta_link,
-      },
-    },
   ]);
 });
