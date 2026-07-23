@@ -75,7 +75,7 @@ export default apiInitializer((api) => {
         },
         {
           block: BlockFeaturedList,
-          id: "featured-list",
+          id: "featured-list-2",
           args: {
             title: "homepage.featured_list.title",
             linkText: "homepage.featured_list.link_text",
