@@ -23,10 +23,19 @@ export default class BlockUpcomingEvents extends Component {
   async fetchEvents() {
     const count = this.args.count || 5;
     const results = await ajax("discourse-post-event/events");
+
     if (!results.events?.length) {
       return null;
     }
-    return results.events.slice(0, count);
+
+    const now = new Date();
+
+  // Separate past and future events, then sort ascending by start date
+    const upcoming = results.events
+      .filter((e) => new Date(e.starts_at) >= now)
+      .sort((a, b) => new Date(a.starts_at) - new Date(b.starts_at));
+
+    return upcoming.slice(0, count);
   }
 
   getShortDate(startsAt) {
