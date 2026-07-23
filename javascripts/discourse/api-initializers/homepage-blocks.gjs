@@ -7,6 +7,13 @@ import BlockSubmissionsList from "../blocks/block-submissions-list";
 import BlockUpcomingEvents from "../blocks/block-upcoming-events";
 
 export default apiInitializer((api) => {
+
+  api.onPageChange(() => {
+  const router = api.container.lookup("service:router");
+  console.log("Current route:", router.currentRouteName);
+  });
+
+
   api.renderBlocks("homepage-blocks", [
     {
       block: BlockFeaturedTopics,
