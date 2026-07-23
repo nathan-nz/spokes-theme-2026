@@ -65,7 +65,7 @@ export default apiInitializer((api) => {
             count: settings.events_count,
             buttonLabel: "homepage.events.button_label",
             linkLabel: "homepage.events.link_label",
-            linkUrl: "/upcoming-events",
+            linkUrl: "/c/events",
           },
           conditions: {
             type: "setting",
