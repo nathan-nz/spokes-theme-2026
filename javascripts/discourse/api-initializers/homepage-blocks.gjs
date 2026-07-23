@@ -60,8 +60,8 @@ export default apiInitializer((api) => {
           },
         },
        {
-          block: BlockSidebarSubmissions,
-          id: "sidebar-submissions",
+          block: BlockSidebarSubmissionsList,
+          id: "sidebar-submissions-list",
           args: {
             title: "community.submissions",
             count: 6,
