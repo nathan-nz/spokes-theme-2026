@@ -1,6 +1,6 @@
 en:
   theme_metadata:
-    description: "Example Discourse theme with blocks — skills reference implementation"
+    description: "New Discourse Theme for spokes.nz with addition of homepage blocks"
     settings:
       featured_topics_tag: "Tag used to filter featured topics"
       featured_topics_count: "Number of featured topics to display"
