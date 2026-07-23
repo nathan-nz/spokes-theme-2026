@@ -73,6 +73,17 @@ export default apiInitializer((api) => {
             enabled: true,
           },
         },
+        {
+          block: BlockFeaturedList,
+          id: "featured-list",
+          args: {
+            title: "homepage.featured_list.title",
+            linkText: "homepage.featured_list.link_text",
+            linkUrl: "/latest",
+            count: settings.featured_list_count,
+            filter: settings.featured_list_filter,
+          },
+        },
       ],
     },
     {
