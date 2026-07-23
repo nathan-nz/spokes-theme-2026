@@ -3,7 +3,7 @@ import { apiInitializer } from "discourse/lib/api";
 import BlockCta from "../blocks/block-cta";
 import BlockFeaturedList from "../blocks/block-featured-list";
 import BlockFeaturedTopics from "../blocks/block-featured-topics";
-import BlockLeaderboard from "../blocks/block-leaderboard";
+import BlockSidebarSubmissions from "../blocks/block-submissions";
 import BlockUpcomingEvents from "../blocks/block-upcoming-events";
 
 export default apiInitializer((api) => {
@@ -61,7 +61,7 @@ export default apiInitializer((api) => {
         },
        {
           block: BlockSidebarSubmissions,
-          id: "sidebar-submissions"
+          id: "sidebar-submissions",
           args: {
             title: "community.submissions",
             count: 6,
